@@ -1,11 +1,34 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { Outlet } from 'react-router-dom';
+import AsideNotes from './AsideNotes';
+import Logo from './Logo';
+import NotesModal from './NotesModal';
 
 function Main({ children }) {
+	const [showNotesModal, setShowNotesModal] = useState(false);
 	return (
-		<>
-			{children}
-			<h1>Main Content</h1>
-		</>
+		<div className='mainContent'>
+			<div className='header'>Header</div>
+			<div className='dashboard'>
+				{children}
+				<Outlet />
+			</div>
+			<aside className='sideNotes'>
+				<AsideNotes
+					showNotesModal={showNotesModal}
+					setShowNotesModal={setShowNotesModal}
+				/>
+			</aside>
+			<div className='footer'>
+				<Logo />
+			</div>
+			{showNotesModal ? (
+				<NotesModal
+					showNotesModal={showNotesModal}
+					setShowNotesModal={setShowNotesModal}
+				/>
+			) : null}
+		</div>
 	);
 }
 

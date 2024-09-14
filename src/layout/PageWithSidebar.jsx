@@ -3,6 +3,7 @@ import './layout.css';
 import ToggleSidebar from './components/ToggleSidebar';
 import Sidebar from './components/Sidebar';
 import Main from './components/Main';
+import Logo from './components/Logo';
 
 function PageWithSidebar({ children }) {
 	const [isSidebarOpen, setIsSidebarOpen] = useState(false);

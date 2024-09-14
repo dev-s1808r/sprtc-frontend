@@ -1,6 +1,6 @@
 .container {
 	display: flex;
-	height: 100vh; /* Full viewport height */
+	height: 100dvh; /* Full viewport height */
 	overflow: hidden; /* Prevent the container from scrolling */
 	position: relative;
 }
@@ -30,10 +30,9 @@
 	left: -250px; /* Hidden by default */
 	width: 250px;
 	height: 100%;
-	background-color: #333;
+	background-color: #434949;
 	color: #fff;
 	overflow-y: auto;
-	padding: 20px;
 	transition: left 0.3s ease;
 	z-index: 1000;
 }
@@ -57,12 +56,62 @@
 	color: #ccc;
 }
 
+.sidebarLogoContainer {
+	width: 100%;
+	height: 72px;
+	background-color: #f3f4f4;
+}
+
+.sidebarStatic {
+	position: absolute;
+	width: 100%;
+	bottom: 0;
+	left: 0;
+	background-color: #3b3f3e;
+}
+
+.sidebarDynamic {
+	width: 100%;
+	position: absolute;
+	left: 0;
+	overflow-y: auto;
+	height: 75%;
+}
+
+.activeLink {
+	background-color: #77807f;
+	height: 100%;
+	width: 100%;
+}
+
+.navListHolder {
+	list-style-type: none;
+}
+
+.navListItem {
+	padding: 16px;
+}
+
+.dynamicSidebarTitle {
+	padding: 16px;
+}
+
+.navListItemLink {
+	text-decoration: none;
+	color: inherit;
+	width: 100%;
+	height: 100%;
+	display: block;
+}
+
+.navListItem:hover {
+	background-color: #77807f;
+}
 /* Content Styles */
 .content {
 	flex: 1;
 	overflow-y: auto;
-	padding: 20px;
-	background-color: #f9f9f9;
+	background-color: #ffffff;
 	margin-left: 0; /* Adjusted when sidebar is open */
 	transition: margin-left 0.3s ease;
 }
@@ -81,6 +130,49 @@
 	height: 100%;
 	background-color: rgba(0, 0, 0, 0.5);
 	z-index: 999; /* Below the sidebar, above the content */
+}
+
+.mainContent {
+	height: 100%;
+	display: grid;
+	grid-template-rows: 72px 1fr 72px;
+	grid-template-columns: repeat(4, 1fr);
+	column-gap: 12px;
+}
+
+.header {
+	grid-row: 1 / 2;
+	grid-column: 1/-1;
+	border-bottom: 1px solid gainsboro;
+}
+
+.dashboard {
+	grid-row: 2/3;
+	grid-column: 1/-1;
+	overflow-y: auto;
+	padding: 12px;
+}
+
+.sideNotes {
+	display: none;
+}
+
+.footer {
+	grid-row: 3/4;
+	border-top: 1px solid gainsboro;
+	grid-column: 1/-1;
+	display: flex;
+	align-items: center;
+	padding: 0 12px;
+}
+
+.logo {
+	height: 27px;
+	width: 112px;
+}
+
+.notesModal {
+	display: none;
 }
 
 /* Responsive Design for Larger Screens */
@@ -112,6 +204,83 @@
 	}
 
 	.container.sidebar-open .content {
-		margin-left: 250px;
+		margin-left: 0;
+	}
+
+	.mainContent {
+		height: 100%;
+		display: grid;
+		grid-template-rows: 72px 1fr 72px;
+		grid-template-columns: repeat(12, 1fr);
+		column-gap: 24px;
+	}
+
+	.header {
+		grid-row: 1 / 2;
+		grid-column: 1/13;
+	}
+
+	.dashboard {
+		grid-row: 2/3;
+		grid-column: 1/9;
+		/* padding-top: 12px; */
+		padding: 12px;
+		/* border: 1px solid gainsboro; */
+		margin: 12px 0;
+	}
+
+	.sideNotes {
+		display: block;
+		grid-column: 9/11;
+		/* padding: 12px 0; */
+		overflow-y: scroll;
+		background-color: #fff;
+		margin: 12px 0;
+		border-bottom: 1px solid gainsboro;
+	}
+
+	.buttonAddNotes {
+		width: 100%;
+		padding: 12px;
+		position: sticky;
+		top: 0;
+	}
+
+	.noteContainer {
+		overflow-y: auto;
+		display: flex;
+		flex-direction: column;
+	}
+
+	.note {
+		height: 150px;
+		margin: 12px 0;
+		padding: 12px;
+		border: 1px solid gainsboro;
+		overflow-y: hidden;
+	}
+
+	.notesModal {
+		display: block;
+		z-index: 9999;
+		grid-column: 2/8;
+		grid-row: 2/3;
+		margin: 84px 0;
+		background-color: #fff;
+		overflow-y: auto;
+		font-size: 34px;
+		/* box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px; */
+		/* box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px,
+			rgba(0, 0, 0, 0.3) 0px 1px 3px -1px; */
+		/* box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 2px 0px; */
+		box-shadow: rgba(17, 17, 26, 0.05) 0px 1px 0px,
+			rgba(17, 17, 26, 0.1) 0px 0px 8px;
+		padding: 24px;
+	}
+
+	.footer {
+		grid-row: 3/4;
+		grid-column: 1/13;
+		background-color: white;
 	}
 }

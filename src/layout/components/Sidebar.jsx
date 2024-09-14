@@ -1,18 +1,25 @@
 import React from 'react';
 import CloseSidebar from './CloseSidebar';
+import { useLocation } from 'react-router-dom';
+import SidebarNavStatic from './SidebarNavStatic';
+import SidebarNavDynamic from './SidebarNavDynamic';
+import Logo from './Logo';
 
 function Sidebar({ isSidebarOpen, setIsSidebarOpen }) {
+	let location = useLocation();
+	let pathname = location.pathname.split('/')[1];
 	return (
 		<>
 			<CloseSidebar
 				isSidebarOpen={isSidebarOpen}
 				setIsSidebarOpen={setIsSidebarOpen}
 			/>
-			<h2>Sidebar</h2>
-			<ul>
-				<li>Menu Item 1</li>
-				<li>Menu Item 2</li>
-			</ul>
+			<div className='sidebarDynamic'>
+				<SidebarNavDynamic pathname={pathname} className='sidebarDynamic' />
+			</div>
+			<div className='sidebarStatic'>
+				<SidebarNavStatic />
+			</div>
 		</>
 	);
 }
