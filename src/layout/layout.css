@@ -175,8 +175,24 @@
 	display: none;
 }
 
+/*  */
+
+.groupContainer {
+	margin-bottom: 24px;
+}
+
+.groupHeader {
+	font-size: 24px;
+	margin: 8px;
+}
+
+.groupShift {
+	outline: 1px solid gainsboro;
+	margin-bottom: 24px;
+}
+
 /* Responsive Design for Larger Screens */
-@media (min-width: 768px) {
+@media (min-width: 1081px) {
 	/* Hide toggle and close buttons on larger screens */
 	.toggle-button,
 	.close-button {
@@ -282,5 +298,14 @@
 		grid-row: 3/4;
 		grid-column: 1/13;
 		background-color: white;
+	}
+
+	.groupContainer {
+		margin-bottom: 24px;
+	}
+
+	.groupHeader {
+		font-size: 24px;
+		margin: 12px;
 	}
 }

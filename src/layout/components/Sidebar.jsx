@@ -3,7 +3,6 @@ import CloseSidebar from './CloseSidebar';
 import { useLocation } from 'react-router-dom';
 import SidebarNavStatic from './SidebarNavStatic';
 import SidebarNavDynamic from './SidebarNavDynamic';
-import Logo from './Logo';
 
 function Sidebar({ isSidebarOpen, setIsSidebarOpen }) {
 	let location = useLocation();

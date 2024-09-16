@@ -8,7 +8,7 @@ function Main({ children }) {
 	const [showNotesModal, setShowNotesModal] = useState(false);
 	return (
 		<div className='mainContent'>
-			<div className='header'>Header</div>
+			<div className='header'></div>
 			<div className='dashboard'>
 				{children}
 				<Outlet />

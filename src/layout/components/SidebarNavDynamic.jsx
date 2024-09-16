@@ -10,7 +10,7 @@ function SidebarNavDynamic({ pathname }) {
 	const [active, setActive] = useState('');
 
 	const returnNavArray = (pathname, sidebarData) => {
-		if (pathname === '') {
+		if (pathname === 'order') {
 			return sidebarData.order;
 		}
 		if (pathname === 'user-dashboard') {
@@ -27,16 +27,13 @@ function SidebarNavDynamic({ pathname }) {
 
 	useEffect(() => {
 		setNavArray(returnNavArray(pathname, sidebarData));
-		console.log(navArray);
 	}, [pathname]);
 
 	return (
 		<>
-			<h2 className='dynamicSidebarTitle'>
-				{pathname ? pathname : 'Order SID'}
-			</h2>
+			<h2 className='dynamicSidebarTitle'>{pathname ? pathname : null}</h2>
 			<ul className='navListHolder'>
-				{navArray.map((e) => (
+				{navArray?.map((e) => (
 					<li
 						key={e}
 						className={`navListItem ${active === e ? 'activeLink' : ''}`}
